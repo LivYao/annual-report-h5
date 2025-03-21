@@ -1359,6 +1359,97 @@
                 border-color: var(--neutral-700);
             }
         }
+
+        /* 添加响应式设计 */
+        @media (max-width: 768px) {
+            .data-circles {
+                grid-template-columns: 1fr;
+            }
+            
+            .data-circle {
+                width: 100%;
+                max-width: 160px;
+            }
+        }
+
+        /* 添加深色模式支持 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --neutral-50: #1A202C;
+                --neutral-100: #2D3748;
+                --neutral-200: #4A5568;
+                --neutral-300: #718096;
+                --neutral-400: #A0AEC0;
+                --neutral-500: #CBD5E0;
+                --neutral-600: #E2E8F0;
+                --neutral-700: #EDF2F7;
+                --neutral-800: #F7FAFC;
+                --neutral-900: #FFFFFF;
+            }
+            
+            .phone-frame {
+                border-color: var(--neutral-700);
+            }
+        }
+
+        /* 优化动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatCircle {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulseScale {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .data-circle {
+            animation: fadeInUp 0.6s ease-out, floatCircle 3s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .data-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-button {
+            animation: pulseScale 2s ease-in-out infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .share-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 优化页面过渡效果 */
+        .swiper-slide {
+            transition: opacity 0.3s ease;
+        }
+
+        .swiper-slide-active {
+            animation: fadeInUp 0.6s ease-out;
+        }
     </style>
 </head>
 <body>
