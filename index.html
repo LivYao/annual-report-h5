@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>乐加会年度回顾</title>
+    <title>年度回顾</title>
     <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
@@ -1359,6 +1359,11 @@
                 border-color: var(--neutral-700);
             }
         }
+
+        /* 删除说明模块的 CSS 样式 */
+        .page-description {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -1403,351 +1408,73 @@
                 <!-- 封面页 -->
                 <div class="swiper-slide">
                     <div class="page">
+                        <h1 class="title">2023年度回顾</h1>
+                        <p class="subtitle">你的专属鸡尾酒故事</p>
+                        <div class="scroll-hint">向上滑动查看更多</div>
                         <div class="blur-circle blur-circle-1"></div>
                         <div class="blur-circle blur-circle-2"></div>
-                        <h1 class="title">乐加会年度回顾</h1>
-                        <div class="subtitle">感谢有你</div>
-                        <div class="scroll-hint">
-                            <i class="fas fa-chevron-down"></i>
-                            向下滑动继续
-                        </div>
                     </div>
                 </div>
 
-                <!-- 加入天数页 -->
+                <!-- 会员成长页 -->
                 <div class="swiper-slide">
                     <div class="page">
-                        <h2 class="page-title"></h2>
-                        <div class="data-circles"></div>
+                        <h2 class="page-title">会员成长</h2>
+                        <div class="data-circles">
+                            <!-- 数据圈内容 -->
+                        </div>
                     </div>
                 </div>
 
                 <!-- 进货统计页 -->
                 <div class="swiper-slide">
-                    <div class="page purchase-page">
-                        <h2 class="page-title"></h2>
-                        <div class="data-circles"></div>
+                    <div class="page">
+                        <h2 class="page-title">进货统计</h2>
+                        <div class="data-circles">
+                            <!-- 数据圈内容 -->
+                        </div>
                     </div>
                 </div>
 
                 <!-- 活动参与页 -->
                 <div class="swiper-slide">
                     <div class="page">
-                        <h2 class="page-title"></h2>
-                        <div class="data-circles"></div>
+                        <h2 class="page-title">活动参与</h2>
+                        <div class="data-circles">
+                            <!-- 数据圈内容 -->
+                        </div>
                     </div>
                 </div>
 
                 <!-- 积分统计页 -->
                 <div class="swiper-slide">
                     <div class="page">
-                        <h2 class="page-title"></h2>
-                        <div class="data-circles"></div>
+                        <h2 class="page-title">积分统计</h2>
+                        <div class="data-circles">
+                            <!-- 数据圈内容 -->
+                        </div>
                     </div>
                 </div>
 
                 <!-- 货券统计页 -->
                 <div class="swiper-slide">
-                    <div class="page vouchers-page">
-                        <div class="bottle-background">
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
-                            <script>
-                                // Matter.js 初始化
-                                const Engine = Matter.Engine,
-                                      Render = Matter.Render,
-                                      World = Matter.World,
-                                      Bodies = Matter.Bodies,
-                                      Body = Matter.Body,
-                                      Events = Matter.Events;
-
-                                // 创建引擎
-                                const engine = Engine.create({
-                                    gravity: {
-                                        x: 0,
-                                        y: 0.5  // 降低重力加速度
-                                    }
-                                });
-
-                                // 获取容器尺寸
-                                const container = document.querySelector('.bottle-background');
-                                const containerWidth = container.offsetWidth || 393;
-                                const containerHeight = container.offsetHeight || 852;
-
-                                // 创建渲染器
-                                const render = Render.create({
-                                    element: container,
-                                    engine: engine,
-                                    options: {
-                                        width: containerWidth,
-                                        height: containerHeight,
-                                        wireframes: false,
-                                        background: 'transparent'
-                                    }
-                                });
-
-                                // 创建瓶子SVG模板
-                                const bottleTemplate = `<svg class="bottle-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M462.90411 368.219178c-10.520548-14.027397-35.068493-35.068493-52.60274-45.589041s-24.547945-38.575342-24.547945-45.589041c0-7.013699 3.506849-35.068493 3.506849-49.095891S378.739726 185.863014 378.739726 175.342466c-3.506849-7.013699-7.013699-31.561644-7.013699-49.095891 0 0 10.520548 3.506849 10.520548-10.520548V21.041096S385.753425 14.027397 371.726027 10.520548C357.69863 7.013699 336.657534 3.506849 319.123288 3.506849S277.041096 7.013699 266.520548 10.520548c-14.027397 3.506849-14.027397 7.013699-14.027397 7.013699v94.684931c0 14.027397 14.027397 14.027397 14.027397 14.027397 0 17.534247-3.506849 42.082192-7.013699 49.095891-3.506849 10.520548-10.520548 38.575342-10.520548 52.602739s3.506849 42.082192 3.50685 49.095891c0 7.013699-3.506849 35.068493-24.547946 45.589041s-42.082192 31.561644-52.602739 45.589041-7.013699 45.589041-7.013699 45.589041v385.753425s0 129.753425 3.506849 161.315068c0 31.561644 21.041096 59.616438 21.041096 59.616439h256s21.041096-28.054795 21.041096-59.616439c0-31.561644 3.506849-161.315068 3.50685-161.315068v-385.753425c-3.506849 0 0-31.561644-10.520548-45.589041z"></path>
-                                </svg>`;
-
-                                // 颜色列表
-                                const colors = [
-                                    '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFBE0B',
-                                    '#FF9999', '#9B59B6', '#3498DB', '#E67E22', '#2ECC71',
-                                    '#F1C40F', '#E84393'
-                                ];
-
-                                // 获取随机颜色
-                                function getRandomColor() {
-                                    return colors[Math.floor(Math.random() * colors.length)];
-                                }
-
-                                // 创建瓶子的DOM元素
-                                function createBottleElement(x, y, angle, color) {
-                                    const bottle = document.createElement('div');
-                                    bottle.style.cssText = `
-                                        position: absolute;
-                                        left: 0;
-                                        top: 0;
-                                        width: 60px;
-                                        height: 60px;
-                                        opacity: 0.5;
-                                        transform-origin: center;
-                                        pointer-events: none;
-                                    `;
-                                    bottle.innerHTML = bottleTemplate;
-                                    const path = bottle.querySelector('path');
-                                    path.setAttribute('fill', color);
-                                    return bottle;
-                                }
-
-                                // 创建瓶子物理对象
-                                function createBottle() {
-                                    const x = Math.random() * (containerWidth - 60);
-                                    const y = -60;
-                                    
-                                    // 生成一个随机的初始角度，避开整数倍的90度
-                                    const baseAngle = Math.random() * Math.PI * 2;
-                                    const offsetAngle = (Math.random() * 0.6 + 0.2) * Math.PI;
-                                    const angle = baseAngle + offsetAngle;
-                                    
-                                    const color = getRandomColor();
-
-                                    const bottleElement = createBottleElement(x, y, angle, color);
-                                    container.appendChild(bottleElement);
-
-                                    const bottle = Bodies.rectangle(x, y, 60, 60, {
-                                        angle: angle,
-                                        restitution: 0.0001,  // 几乎完全没有弹性
-                                        friction: 0.99,      // 极大的摩擦力
-                                        density: 2.0,        // 大幅增加密度
-                                        frictionAir: 0.001,  // 保持低空气阻力
-                                        frictionStatic: 0.99, // 极大的静摩擦力
-                                        angularDamping: 0.99, // 最大角速度阻尼
-                                        angularVelocity: (Math.random() - 0.5) * 0.01, // 进一步减小初始角速度
-                                        inertia: Infinity,
-                                        render: {
-                                            visible: false
-                                        },
-                                        element: bottleElement
-                                    });
-
-                                    // 添加随机初始速度
-                                    const initialVelocity = {
-                                        x: (Math.random() - 0.5) * 0.05, // 进一步减小初始水平速度
-                                        y: 0
-                                    };
-                                    Body.setVelocity(bottle, initialVelocity);
-
-                                    return bottle;
-                                }
-
-                                // 创建边界墙
-                                const wallThickness = 60;
-                                const walls = [
-                                    Bodies.rectangle(containerWidth/2, containerHeight + wallThickness/2, containerWidth + wallThickness*2, wallThickness, { 
-                                        isStatic: true,
-                                        restitution: 0.001,  // 墙壁也几乎没有弹性
-                                        friction: 0.95,      // 保持高摩擦力
-                                        chamfer: { radius: 10 },
-                                        render: { visible: false }
-                                    }), // 底部
-                                    Bodies.rectangle(-wallThickness/2, containerHeight/2, wallThickness, containerHeight, { 
-                                        isStatic: true,
-                                        restitution: 0.001,
-                                        friction: 0.95,
-                                        chamfer: { radius: 10 },
-                                        render: { visible: false }
-                                    }), // 左侧
-                                    Bodies.rectangle(containerWidth + wallThickness/2, containerHeight/2, wallThickness, containerHeight, { 
-                                        isStatic: true,
-                                        restitution: 0.001,
-                                        friction: 0.95,
-                                        chamfer: { radius: 10 },
-                                        render: { visible: false }
-                                    }) // 右侧
-                                ];
-
-                                World.add(engine.world, walls);
-
-                                // 修改碰撞事件监听
-                                Events.on(engine, 'collisionStart', function(event) {
-                                    event.pairs.forEach(function(pair) {
-                                        const bodyA = pair.bodyA;
-                                        const bodyB = pair.bodyB;
-                                        
-                                        // 如果是瓶子之间的碰撞
-                                        if (!bodyA.isStatic && !bodyB.isStatic) {
-                                            // 减小碰撞后的角速度变化（限制在30度以内）
-                                            const maxRotation = Math.PI / 6; // 30度
-                                            const randomAngleA = (Math.random() * 0.005) * (Math.random() < 0.5 ? -1 : 1) * maxRotation;
-                                            const randomAngleB = (Math.random() * 0.005) * (Math.random() < 0.5 ? -1 : 1) * maxRotation;
-                                            
-                                            // 大幅减小碰撞后的角速度
-                                            Body.setAngularVelocity(bodyA, bodyA.angularVelocity * 0.01 + randomAngleA);
-                                            Body.setAngularVelocity(bodyB, bodyB.angularVelocity * 0.01 + randomAngleB);
-                                            
-                                            // 减小碰撞后的旋转角度变化（限制在30度以内）
-                                            const rotationA = bodyA.angle + (Math.random() * 0.005) * maxRotation;
-                                            const rotationB = bodyB.angle + (Math.random() * 0.005) * maxRotation;
-                                            
-                                            Body.setAngle(bodyA, rotationA);
-                                            Body.setAngle(bodyB, rotationB);
-
-                                            // 减小碰撞后的速度
-                                            const velocityDampening = 0.02;
-                                            Body.setVelocity(bodyA, {
-                                                x: bodyA.velocity.x * velocityDampening,
-                                                y: bodyA.velocity.y * velocityDampening
-                                            });
-                                            Body.setVelocity(bodyB, {
-                                                x: bodyB.velocity.x * velocityDampening,
-                                                y: bodyB.velocity.y * velocityDampening
-                                            });
-                                        }
-                                        // 如果是瓶子与墙的碰撞
-                                        else if (!bodyA.isStatic || !bodyB.isStatic) {
-                                            const bottle = !bodyA.isStatic ? bodyA : bodyB;
-                                            // 大幅减小角速度
-                                            const maxRotation = Math.PI / 6; // 30度
-                                            const currentAngularVelocity = bottle.angularVelocity;
-                                            const randomOffset = (Math.random() * 0.005) * (Math.random() < 0.5 ? -1 : 1) * maxRotation;
-                                            const newAngularVelocity = currentAngularVelocity * 0.01 + randomOffset;
-                                            
-                                            Body.setAngularVelocity(bottle, newAngularVelocity);
-                                            
-                                            // 减小旋转角度变化（限制在30度以内）
-                                            const newAngle = bottle.angle + (Math.random() * 0.005) * maxRotation;
-                                            Body.setAngle(bottle, newAngle);
-
-                                            // 减小碰撞后的速度
-                                            const velocityDampening = 0.02;
-                                            Body.setVelocity(bottle, {
-                                                x: bottle.velocity.x * velocityDampening,
-                                                y: bottle.velocity.y * velocityDampening
-                                            });
-                                        }
-                                    });
-                                });
-
-                                // 更新DOM元素位置
-                                Events.on(engine, 'afterUpdate', function() {
-                                    engine.world.bodies.forEach(body => {
-                                        if (body.element) {
-                                            body.element.style.transform = `translate(${body.position.x - 30}px, ${body.position.y - 30}px) rotate(${body.angle}rad)`;
-                                        }
-                                    });
-                                });
-
-                                // 启动引擎和渲染器
-                                Engine.run(engine);
-                                Render.run(render);
-
-                                // 定时添加瓶子
-                                let bottleCount = 0;
-                                const totalBottles = 35;
-                                const interval = 10000 / totalBottles; // 10秒内均匀释放35个瓶子
-
-                                function addBottle() {
-                                    if (bottleCount < totalBottles) {
-                                        const bottle = createBottle();
-                                        World.add(engine.world, bottle);
-                                        bottleCount++;
-                                    }
-                                }
-
-                                // 初始添加瓶子
-                                for (let i = 0; i < totalBottles; i++) {
-                                    setTimeout(addBottle, i * interval);
-                                }
-
-                                // 清理超出边界的瓶子
-                                Events.on(engine, 'afterUpdate', function() {
-                                    const bodies = engine.world.bodies;
-                                    for (let i = 0; i < bodies.length; i++) {
-                                        const body = bodies[i];
-                                        if (body.position.y > containerHeight + 100) {
-                                            if (body.element) {
-                                                body.element.remove();
-                                            }
-                                            World.remove(engine.world, body);
-                                            bottleCount--;
-                                            if (bottleCount < totalBottles) {
-                                                const newBottle = createBottle();
-                                                World.add(engine.world, newBottle);
-                                                bottleCount++;
-                                            }
-                                        }
-                                    }
-                                });
-                            </script>
+                    <div class="page">
+                        <h2 class="page-title">货券统计</h2>
+                        <div class="data-circles">
+                            <!-- 数据圈内容 -->
                         </div>
-                        <h2 class="page-title"></h2>
-                        <div class="data-circles"></div>
                     </div>
                 </div>
 
                 <!-- 年度总结页 -->
                 <div class="swiper-slide">
-                    <div class="page summary-page">
-                        <div class="summary-avatar">
-                            <img src="" alt="年度鸡尾酒" id="summaryAvatar">
+                    <div class="page">
+                        <h2 class="page-title">年度总结</h2>
+                        <div class="summary-avatar" id="summaryAvatar">
+                            <!-- 头像内容 -->
                         </div>
-                        <div class="summary-name">2023年度回顾</div>
                         <div class="summary-card">
-                            <div class="summary-grid">
-                                <div class="summary-item">
-                                    <div class="label">加入天数</div>
-                                    <div class="value" id="joinDays">180天</div>
-                        </div>
-                                <div class="summary-item">
-                                    <div class="label">扫码天数</div>
-                                    <div class="value" id="scanDays">120天</div>
-                                </div>
-                                <div class="summary-item">
-                                    <div class="label">进货总量</div>
-                                    <div class="value" id="totalPurchase">1280瓶</div>
-                                </div>
-                                <div class="summary-item">
-                                    <div class="label">活动参与</div>
-                                    <div class="value" id="totalActivity">15次</div>
-                                </div>
-                                <div class="summary-item">
-                                    <div class="label">累计积分</div>
-                                    <div class="value" id="totalPoints">2680分</div>
-                                </div>
-                                <div class="summary-item">
-                                    <div class="label">货券抵扣</div>
-                                    <div class="value" id="totalVoucher">￥860</div>
-                                </div>
-                            </div>
-                            <div class="summary-footer">
-                                感谢一路相伴，期待2024年继续与您共同成长！
-                            </div>
-                        </div>
-                        <div class="summary-share">
-                            <i class="fas fa-share-alt"></i>
-                            分享我的年度回顾
+                            <!-- 总结卡片内容 -->
                         </div>
                     </div>
                 </div>
@@ -1777,22 +1504,22 @@
     <script>
         // 加载内容配置
         let content = {
-            "title": "乐加会年度回顾",
+            "title": "年度回顾",
             "statusBar": {
                 "carrier": "中国移动"
             },
             "header": {
-                "title": "乐加会年度报告"
+                "title": "年度报告"
             },
             "pages": {
                 "cover": {
                     "title": "2025上半年度回顾",
-                    "subtitle": "乐加会 · 与你共同成长",
+                    "subtitle": " · 与你共同成长",
                     "scrollHint": "↑ 向上滑动查看更多",
                     "description": "展示年度回顾标题、上滑提示动画、动态背景光效"
                 },
                 "membership": {
-                    "title": "你的乐加会之旅",
+                    "title": "你的之旅",
                     "circles": [
                         {
                             "value": "2023-11-12",
@@ -1827,23 +1554,23 @@
                     ],
                     "brands": [
                         {
-                            "name": "尊美醇",
+                            "name": "品牌A",
                             "percentage": 35
                         },
                         {
-                            "name": "绝对伏特加",
+                            "name": "品牌B",
                             "percentage": 28
                         },
                         {
-                            "name": "必富达",
+                            "name": "品牌C",
                             "percentage": 20
                         },
                         {
-                            "name": "奥美加",
+                            "name": "品牌D",
                             "percentage": 12
                         },
                         {
-                            "name": "马利宝",
+                            "name": "品牌E",
                             "percentage": 5
                         }
                     ],
@@ -1860,18 +1587,17 @@
                             "value": "4",
                             "label": "获得奖励次",
                             "details": [
-                                "1-2月 尊美醇12赠1",
-                                "3-4月 尊美醇12赠1",
-                                "3月 赠绿茶",
-                                "3-4月 单一麦芽赠酒"
+                                "礼品A",
+                                "礼品B",
+                                "礼品C"
                             ]
                         },
                         {
                             "value": "2",
                             "label": "错过活动次",
                             "details": [
-                                "1-4月 尊美醇12赠1",
-                                "3-4月 单一麦芽赠酒"
+                                "活动A",
+                                "活动B"
                             ]
                         }
                     ],
@@ -1908,7 +1634,7 @@
                         },
                         {
                             "value": "35",
-                            "label": "相当于几瓶尊美醇"
+                            "label": "相当于几瓶酒"
                         }
                     ],
                     "description": "兑换次数数据圈、抵扣金额数据圈、平均单次抵扣数据圈、浮动动画效果\n只有可以兑换货券的门店需要展示\n背景是彩色酒瓶自由落体堆积的效果，根据相应抵扣瓶数落体相应数量的瓶子，每次滑动到这一页都要开始掉落"
@@ -1981,23 +1707,13 @@
 
         // 初始化 Swiper
         function initSwiper() {
-            swiper = new Swiper('.swiper', {
+            const swiper = new Swiper('.swiper', {
                 direction: 'vertical',
+                slidesPerView: 1,
                 mousewheel: true,
                 keyboard: {
                     enabled: true,
-                    onlyInViewport: true
                 },
-                speed: 800,
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                grabCursor: true,
-                touchEventsTarget: 'container',
-                touchRatio: 1,
-                touchAngle: 45,
-                resistance: true,
                 resistanceRatio: 0.85,
                 threshold: 5,
                 touchStartPreventDefault: false,
@@ -2007,7 +1723,6 @@
                     },
                     slideChange: function () {
                         updateNavigation(this.activeIndex);
-                        updateDescription(this.activeIndex);
                         resetCircleAnimations();
                         resetCardAnimations();
                     }
@@ -2087,10 +1802,8 @@
                 return;
             }
 
-            console.log('Updating content with:', content);
-
             // 更新标题
-            document.title = content.title || '乐加会年度回顾';
+            document.title = content.title || '年度回顾';
             
             // 更新状态栏
             if (content.statusBar) {
@@ -2099,7 +1812,7 @@
             
             // 更新头部
             if (content.header) {
-                document.querySelector('.header-title').textContent = content.header.title || '乐加会年度报告';
+                document.querySelector('.header-title').textContent = content.header.title || '年度报告';
             }
 
             // 更新导航
@@ -2118,17 +1831,6 @@
             // 更新各页面的文本内容
             updatePageTexts();
 
-            // 更新当前页面的说明
-            if (swiper) {
-                updateDescription(swiper.activeIndex);
-            }
-
-            // 为活动参与页面添加特殊类名
-            const activitiesSlide = document.querySelector('.swiper-slide:nth-child(4)');
-            if (activitiesSlide) {
-                activitiesSlide.querySelector('.page').classList.add('activities-page');
-            }
-
             // 更新年度总结页数据
             document.getElementById('summaryAvatar').src = 'image/summary_images/moscow_mule_1.jpg';
             
@@ -2146,51 +1848,6 @@
             document.getElementById('totalActivity').textContent = activityData[0].value + '次';
             document.getElementById('totalPoints').textContent = pointsData[0].value + '分';
             document.getElementById('totalVoucher').textContent = '￥' + voucherData[1].value;
-
-            // 为进货统计页面添加特殊类名和品牌柱形图
-            const purchaseSlide = document.querySelector('.swiper-slide:nth-child(3)');
-            if (purchaseSlide) {
-                const page = purchaseSlide.querySelector('.page');
-                page.classList.add('purchase-page');
-                
-                // 添加品牌柱形图
-                if (content.pages.purchase.brands) {
-                    const brandBars = document.createElement('div');
-                    brandBars.className = 'brand-bars';
-                    
-                    content.pages.purchase.brands.forEach((brand, index) => {
-                        const barHtml = `
-                            <div class="brand-bar" style="animation-delay: ${index * 0.2}s">
-                                <div class="bar-container">
-                                    <div class="bar-fill">
-                                        <span class="brand-percentage">${brand.percentage}%</span>
-                                        <span class="brand-name">${brand.name}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        brandBars.innerHTML += barHtml;
-                    });
-                    
-                    page.appendChild(brandBars);
-                }
-            }
-
-            // 更新积分统计页面
-            const pointsSlide = document.querySelector('.swiper-slide:nth-child(5)');
-            if (pointsSlide) {
-                const dataCirclesContainer = pointsSlide.querySelector('.data-circles');
-                if (dataCirclesContainer && content.pages.points.circles) {
-                    let circlesHtml = generateDataCircles(content.pages.points.circles);
-                    // 添加礼品图片圈
-                    circlesHtml += `
-                        <div class="data-circle gift-circle" style="animation-delay: 0.4s, 0.7s">
-                            <img src="gift.png" alt="积分礼品" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'140\\' height=\\'140\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23666\\'/><text x=\\'50%\\' y=\\'50%\\' font-size=\\'14\\' fill=\\'white\\' text-anchor=\\'middle\\' dy=\\'.3em\\'>礼品图片</text></svg>'">
-                        </div>
-                    `;
-                    dataCirclesContainer.innerHTML = circlesHtml;
-                }
-            }
         }
 
         function updatePageTexts() {
