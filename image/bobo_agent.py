@@ -1,10 +1,14 @@
 import os
 import requests
 import time
+from dotenv import load_dotenv
+
+# 加载环境变量
+load_dotenv()
 
 # === API 配置 ===
 SILICONFLOW_URL = "https://api.siliconflow.cn/v1/images/generations"
-SILICONFLOW_TOKEN = "***REMOVED***"
+SILICONFLOW_TOKEN = os.getenv("SILICONFLOW_TOKEN")  # 从环境变量获取令牌
 IMAGE_MODEL = "black-forest-labs/FLUX.1-pro"
 IMAGE_SIZE = "1080x1920"  # 适配手机屏幕
 DOWNLOAD_DIR = "image/summary_images"  # 本地存储路径
