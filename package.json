@@ -6,26 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "figma": "node -e \"const fs=require('fs');const config=JSON.parse(fs.readFileSync('config.local.json'));process.env.FIGMA_ACCESS_TOKEN=config.mcpServers.figma.env.FIGMA_ACCESS_TOKEN;require('@hapins/figma-mcp');\""
   },
   "dependencies": {
-    "next": "14.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "@hapins/figma-mcp": "^0.1.2",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
     "framer-motion": "^11.0.8",
     "html2canvas": "^1.4.1",
-    "swiper": "^11.0.6",
-    "tailwindcss": "^3.4.1",
-    "autoprefixer": "^10.4.17",
+    "next": "14.1.0",
     "postcss": "^8.4.35",
-    "@tailwindcss/typography": "^0.5.10"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swiper": "^11.0.6",
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "typescript": "^5.3.3",
     "eslint": "^8.57.0",
-    "eslint-config-next": "14.1.0"
+    "eslint-config-next": "14.1.0",
+    "typescript": "^5.3.3"
   }
-} 
+}
