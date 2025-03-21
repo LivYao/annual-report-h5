@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐加会年度回顾</title>
+    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --phone-width: 393px;
+            --phone-height: 852px;
+            --phone-border-radius: 48px;
+            --safe-area-top: 59px;
+            --safe-area-bottom: 34px;
+            
+            /* 主色调 */
+            --primary-50: #F5F7FA;
+            --primary-100: #E4E7EB;
+            --primary-200: #CBD2D9;
+            --primary-300: #9AA5B1;
+            --primary-400: #7B8794;
+            --primary-500: #616E7C;
+            --primary-600: #52606D;
+            --primary-700: #3E4C59;
+            --primary-800: #323F4B;
+            --primary-900: #1F2933;
+            
+            /* 强调色 */
+            --accent-blue: #2B6CB0;
+            --accent-green: #2F855A;
+            --accent-red: #C53030;
+            
+            /* 中性色 */
+            --neutral-50: #F7FAFC;
+            --neutral-100: #EDF2F7;
+            --neutral-200: #E2E8F0;
+            --neutral-300: #CBD5E0;
+            --neutral-400: #A0AEC0;
+            --neutral-500: #718096;
+            --neutral-600: #4A5568;
+            --neutral-700: #2D3748;
+            --neutral-800: #1A202C;
+            --neutral-900: #171923;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--neutral-100);
+            color: var(--neutral-800);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            box-sizing: border-box;
+        }
+
+        /* iPhone 外框样式 */
+        .phone-frame {
+            width: var(--phone-width);
+            height: var(--phone-height);
+            position: relative;
+            background: var(--neutral-50);
+            border-radius: var(--phone-border-radius);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transform-origin: center center;
+            flex-shrink: 0;
+            border: 1px solid var(--neutral-200);
+        }
+
+        /* 刘海屏 */
+        .notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: var(--safe-area-top);
+            background: #000;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            z-index: 1000;
+        }
+
+        /* 底部指示条 */
+        .home-indicator {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 5px;
+            background: #ffffff;
+            border-radius: 3px;
+            z-index: 1000;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 更新页面基础布局 */
+        .page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100%;
+            position: relative;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: calc(var(--safe-area-top) + 44px) 16px var(--safe-area-bottom);
+            background: var(--neutral-50);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 调整数据圈容器布局 */
+        .data-circles {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 16px;
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto;
+        }
+
+        /* 调整数据圈大小 */
+        .data-circle {
+            width: 120px;
+            height: 120px;
+            padding: 12px;
+            margin: 0 auto;
+        }
+
+        /* 调整标题样式 */
+        .title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        /* 调整活动详情样式 */
+        .activities-details {
+            width: 100%;
+            max-width: 360px;
+            margin: 16px auto;
+            padding: 12px;
+        }
+
+        /* 调整品牌柱状图容器 */
+        .brand-bars {
+            width: 100%;
+            max-width: 360px;
+            height: 200px;
+            padding: 16px;
+            margin: 16px auto;
+        }
+
+        .bar-container {
+            width: 48px;
+            height: 180px;
+        }
+
+        /* 调整年度总结页样式 */
+        .summary-page {
+            padding: 16px;
+        }
+
+        .summary-card {
+            width: 100%;
+            max-width: 360px;
+            margin: 16px auto;
+            padding: 16px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .summary-item {
+            padding: 8px;
+        }
+
+        /* 调整页面标题样式 */
+        .page-title {
+            font-size: 1.25rem;
+            margin: 16px 0;
+            padding: 0 16px;
+            text-align: center;
+        }
+
+        /* 调整积分页礼品图片圈样式 */
+        .data-circle.gift-circle {
+            width: 120px;
+            height: 120px;
+        }
+
+        .gift-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 优化滚动提示样式 */
+        .scroll-hint {
+            margin: 1rem 0;
+            font-size: 0.875rem;
+        }
+
+        /* 调整页面描述容器 */
+        .page-description {
+            max-width: 360px;
+            margin: 16px auto;
+            padding: 16px;
+        }
+
+        /* 调整导航容器 */
+        .navigation {
+            max-width: 360px;
+            margin: 16px auto;
+            padding: 12px;
+        }
+
+        .nav-item {
+            padding: 12px 16px;
+            margin: 4px 0;
+            border-radius: 8px;
+            color: var(--neutral-600);
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-item:hover {
+            background: var(--primary-50);
+            color: var(--primary-900);
+        }
+
+        .nav-item.active {
+            background: var(--primary-100);
+            color: var(--primary-900);
+            font-weight: 500;
+        }
+
+        /* 更新页面描述样式 */
+        .page-description {
+            background: var(--neutral-50);
+            border: 1px solid var(--neutral-200);
+            border-radius: 12px;
+            padding: 24px;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .page-description h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--neutral-900);
+            margin-bottom: 12px;
+        }
+
+        .page-description p {
+            font-size: 0.875rem;
+            color: var(--neutral-600);
+            line-height: 1.6;
+        }
+
+        /* 更新标题样式 */
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--neutral-700);
+            letter-spacing: -0.01em;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s 0.2s forwards;
+        }
+
+        .scroll-hint {
+            margin-top: 2rem;
+            color: #7dd3fc;
+            animation: float 2s infinite ease-in-out;
+            font-size: 0.875rem;
+        }
+
+        .blur-circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.2;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        .blur-circle-1 {
+            top: -100px;
+            right: -100px;
+            background: #8B6B4F;  /* 浅棕色光效 */
+        }
+
+        .blur-circle-2 {
+            bottom: -100px;
+            left: -100px;
+            background: #5C4033;  /* 深棕色光效 */
+            animation-delay: -2s;
+        }
+
+        /* 更新数据卡片样式 */
+        .data-card {
+            background: #FFFFFF;
+            border: 1px solid #E5E5E5;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem;
+            width: calc(100% - 2rem);
+            max-width: 320px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .data-card p {
+            font-size: 0.9375rem;
+            margin: 0.5rem 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+        }
+
+        .swiper-slide {
+            overflow: hidden;
+        }
+
+        /* 响应式适配 */
+        @media (max-height: 852px) {
+            body {
+                padding: 20px;
+            }
+        }
+
+        @media (max-height: 750px) {
+            body {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 393px) {
+            .phone-frame {
+                transform: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .notch, .home-indicator {
+                display: none;
+            }
+        }
+
+        /* 添加手机框架容器样式 */
+        .phone-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            flex: 1;
+            min-width: var(--phone-width);
+        }
+
+        /* 状态栏样式 */
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 44px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--neutral-800);
+            font-size: 0.75rem;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .status-bar-left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-bar-right {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .signal-icon {
+            width: 18px;
+            height: 12px;
+            position: relative;
+        }
+
+        .signal-bar {
+            position: absolute;
+            bottom: 0;
+            width: 3px;
+            background: white;
+            border-radius: 1px;
+        }
+
+        .signal-bar:nth-child(1) { height: 4px; left: 0; }
+        .signal-bar:nth-child(2) { height: 6px; left: 4px; }
+        .signal-bar:nth-child(3) { height: 8px; left: 8px; }
+        .signal-bar:nth-child(4) { height: 10px; left: 12px; }
+
+        .battery-icon {
+            width: 22px;
+            height: 12px;
+            border: 1px solid white;
+            border-radius: 2px;
+            padding: 1px;
+            position: relative;
+        }
+
+        .battery-level {
+            height: 100%;
+            width: 60%;
+            background: white;
+            border-radius: 1px;
+        }
+
+        .battery-tip {
+            position: absolute;
+            right: -3px;
+            top: 3px;
+            width: 2px;
+            height: 4px;
+            background: white;
+            border-radius: 0 1px 1px 0;
+        }
+
+        /* 页面头部样式 */
+        .page-header {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            right: 0;
+            height: 44px;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+        }
+
+        .header-back {
+            position: absolute;
+            left: 15px;
+            font-size: 1.25rem;
+            color: var(--neutral-800);
+            cursor: pointer;
+        }
+
+        .header-close {
+            position: absolute;
+            right: 15px;
+            font-size: 1.25rem;
+            color: var(--neutral-800);
+            cursor: pointer;
+        }
+
+        .header-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--neutral-800);
+        }
+
+        /* 调整页面内容的上边距 */
+        .page {
+            padding-top: calc(var(--safe-area-top) + 44px);
+        }
+
+        /* 简化分享按钮样式 */
+        .share-button {
+            position: relative;
+            margin-top: 2rem;
+            padding: 0.75rem 2rem;
+            background: var(--accent-blue);
+            border-radius: 2rem;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            pointer-events: none; /* 禁用交互 */
+            border: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .share-button:hover {
+            background: var(--primary-700);
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-button:active {
+            transform: translateY(0);
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-button i {
+            font-size: 1.25rem;
+        }
+
+        /* 移除不需要的样式 */
+        .share-overlay,
+        .share-tip {
+            display: none;
+        }
+
+        /* 调整最后一页的样式 */
+        .final-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .final-page .data-card {
+            margin-bottom: 1rem;
+        }
+
+        /* 数据圈样式 */
+        .data-circles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            height: 100%;
+            align-content: center;
+        }
+
+        /* 更新数据圈样式 */
+        .data-circle {
+            width: 140px;
+            height: 140px;
+            background: #FFFFFF;
+            border: 1px solid #E5E5E5;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            animation: fadeInScale 0.8s forwards, floatCircle 3s infinite ease-in-out;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .data-circle:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-circle:active {
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-circle .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--neutral-900);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .data-circle .label {
+            font-size: 0.875rem;
+            color: var(--neutral-700);
+            line-height: 1.2;
+        }
+
+        /* 添加礼品图片圈的特殊样式 */
+        .data-circle.gift-circle {
+            background: rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .gift-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-circle:hover img {
+            transform: scale(1.1);
+        }
+
+        .gift-circle::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* 活动参与页面特殊样式 */
+        .activities-page .data-circles {
+            align-content: flex-start;
+            height: auto;
+            padding-top: 0;
+        }
+
+        .activities-page .data-circle {
+            margin-bottom: 10px;
+        }
+
+        .activities-details {
+            width: 100%;
+            margin-top: 10px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        .activities-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .activities-details li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 0.85rem;
+            color: var(--neutral-800);
+        }
+
+        .activities-details li:last-child {
+            border-bottom: none;
+        }
+
+        .activities-details-title {
+            font-size: 1rem;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* 为每个圈添加不同的动画延迟，营造错落感 */
+        .data-circle:nth-child(1) {
+            animation-delay: 0.1s, 0.1s;
+        }
+
+        .data-circle:nth-child(2) {
+            animation-delay: 0.2s, 0.3s;
+        }
+
+        .data-circle:nth-child(3) {
+            animation-delay: 0.3s, 0.5s;
+        }
+
+        .data-circle:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* 添加浮动动画 */
+        @keyframes floatCircle {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* 页面标题样式 */
+        .page-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--neutral-900);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: none;
+        }
+
+        /* 添加目录和说明样式 */
+        .navigation {
+            position: static;
+            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+            width: 360px;
+        }
+
+        .nav-item {
+            position: relative;
+            color: var(--neutral-600);
+            padding: 12px 16px;
+            margin: 4px 0;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .nav-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 4px;
+            height: 0;
+            background: #38bdf8;
+            border-radius: 2px;
+            transform: translateY(-50%);
+            transition: height 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background: var(--neutral-100);
+            color: var(--neutral-900);
+        }
+
+        .nav-item.active {
+            color: var(--neutral-900);
+            background: var(--neutral-100);
+            padding-left: 20px;
+        }
+
+        .nav-item.active:before {
+            height: 70%;
+        }
+
+        /* 图片目录样式 */
+        .image-menu {
+            position: static;
+            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+            width: 360px;
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .image-menu.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .image-menu-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .image-menu-item {
+            color: rgba(255, 255, 255, 0.6);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .image-menu-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .image-menu-item.active {
+            background: rgba(56, 189, 248, 0.2);
+            color: #7dd3fc;
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        /* 移除不需要的菜单切换按钮 */
+        .menu-toggle {
+                display: none;
+            }
+
+        /* 调整页面描述容器的样式 */
+        .page-description {
+            margin-bottom: 0;
+        }
+
+        .page-description p {
+            white-space: pre-line;  /* 添加此行以支持换行 */
+            line-height: 1.5;       /* 添加行高 */
+            margin-top: 10px;       /* 添加上边距 */
+        }
+
+        /* 图片展示区域样式 */
+        .image-showcase {
+            width: 280px;
+            height: 280px;
+            margin: 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 自定义滚动条样式 */
+        .image-menu::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .image-menu::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+
+        .image-menu::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .image-menu::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* 数据圈详情弹窗样式 */
+        .circle-details {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 12px;
+            width: 200px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .data-circle:hover .circle-details {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .circle-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        .circle-details li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .circle-details li:last-child {
+            border-bottom: none;
+        }
+
+        /* 年度总结页样式 */
+        .summary-page {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .summary-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .summary-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .summary-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neutral-900);
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            max-width: 320px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .summary-item {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .summary-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .summary-item .label {
+            font-size: 0.85rem;
+            color: var(--neutral-600);
+            margin-bottom: 5px;
+        }
+
+        .summary-item .value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--neutral-900);
+            background: none;
+            -webkit-text-fill-color: initial;
+        }
+
+        .summary-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--neutral-700);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .summary-share {
+            margin-top: 20px;
+            padding: 10px 30px;
+            background: var(--neutral-100);
+            border-radius: 20px;
+            color: var(--neutral-800);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--neutral-200);
+        }
+
+        /* 进货统计页面的柱形图样式 */
+        .brand-bars {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .brand-bar {
+            height: 100%;
+            width: 56px;
+            margin: 0 5px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInBar 0.5s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .bar-container {
+            width: 56px;
+            height: 210%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .bar-fill {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 28px 28px 0 0;
+            height: var(--fill-height);
+            transition: height 1s ease;
+            overflow: visible;
+        }
+
+        .brand-name {
+            writing-mode: vertical-lr;
+            text-orientation: upright;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            padding: 15px 0;
+            min-height: 100%;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .brand-percentage {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: white;
+        }
+
+        /* 为每个品牌设置不同的颜色和高度 */
+        .brand-bar:nth-child(1) .bar-fill {
+            background: rgba(47, 79, 79, 1); /* 墨绿色 */
+            height: 210%;
+        }
+
+        .brand-bar:nth-child(2) .bar-fill {
+            background: rgba(0, 191, 255, 1); /* 生蓝色 */
+            height: 168%;
+        }
+
+        .brand-bar:nth-child(3) .bar-fill {
+            background: rgba(220, 20, 60, 1); /* 红色 */
+            height: 120%;
+        }
+
+        .brand-bar:nth-child(4) .bar-fill {
+            background: rgba(64, 224, 208, 1); /* 蓝绿色 */
+            height: 72%;
+        }
+
+        .brand-bar:nth-child(5) .bar-fill {
+            background: rgba(255, 255, 255, 1); /* 白色 */
+            height: 30%;
+        }
+
+        .brand-bar:nth-child(5) .brand-name,
+        .brand-bar:nth-child(5) .brand-percentage {
+            color: #333; /* 白色背景时使用深色文字 */
+        }
+
+        @keyframes slideInBar {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 调整进货统计页面的布局 */
+        .purchase-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            padding-top: calc(var(--safe-area-top) + 44px);
+        }
+
+        .purchase-page .data-circles {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        /* 货券页面特殊样式 */
+        .bottle-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bottle-icon {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            opacity: 0.5;
+            mix-blend-mode: multiply;
+            transform-origin: center;
+        }
+
+        @keyframes continuousFall {
+            0% {
+                transform: translateY(-120vh) rotate(var(--start-rotate));
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+                transform: translateY(var(--final-y)) rotate(var(--final-rotate));
+            }
+            100% {
+                transform: translateY(var(--final-y)) rotate(var(--final-rotate));
+                opacity: 0.5;
+            }
+        }
+
+        /* 酒瓶颜色列表 */
+        .bottle-colors {
+            --color-1: #FF6B6B;  /* 红色 */
+            --color-2: #4ECDC4;  /* 青色 */
+            --color-3: #45B7D1;  /* 蓝色 */
+            --color-4: #96CEB4;  /* 绿色 */
+            --color-5: #FFBE0B;  /* 黄色 */
+            --color-6: #FF9999;  /* 粉色 */
+            --color-7: #9B59B6;  /* 紫色 */
+            --color-8: #3498DB;  /* 天蓝色 */
+            --color-9: #E67E22;  /* 橙色 */
+            --color-10: #2ECC71;  /* 翠绿色 */
+            --color-11: #F1C40F;  /* 金色 */
+            --color-12: #E84393;  /* 玫红色 */
+        }
+
+        /* 确保货券页的内容在酒瓶背景之上 */
+        .vouchers-page .page-title,
+        .vouchers-page .data-circles {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 响应式布局优化 */
+        @media (max-width: 1200px) {
+            body {
+                padding: 20px;
+                gap: 20px;
+            }
+
+            .right-container {
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            body {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .right-container {
+                width: var(--phone-width);
+                max-height: none;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .phone-frame {
+                transform: scale(0.85);
+            }
+
+            .data-circles {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0;
+            }
+
+            .phone-frame {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+                border: none;
+            }
+
+            .right-container {
+                display: none;
+            }
+
+            .data-circles {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 12px;
+            }
+
+            .data-circle {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1;
+            }
+        }
+
+        /* 暗色模式支持 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --neutral-50: #1A202C;
+                --neutral-100: #2D3748;
+                --neutral-200: #4A5568;
+                --neutral-300: #718096;
+                --neutral-400: #A0AEC0;
+                --neutral-500: #CBD5E0;
+                --neutral-600: #E2E8F0;
+                --neutral-700: #EDF2F7;
+                --neutral-800: #F7FAFC;
+                --neutral-900: #FFFFFF;
+            }
+
+            body {
+                background: var(--neutral-900);
+            }
+
+            .phone-frame {
+                border-color: var(--neutral-700);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="notch"></div>
+        <div class="home-indicator"></div>
+        
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-bar-left">
+                <div class="signal-icon">
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                    <div class="signal-bar"></div>
+                </div>
+                <span></span>
+                <i class="fas fa-wifi"></i>
+            </div>
+            <div class="status-bar-right">
+                <span class="time">14:22</span>
+                <div class="battery-icon">
+                    <div class="battery-level"></div>
+                    <div class="battery-tip"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页面头部 -->
+        <div class="page-header">
+            <div class="header-back">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="header-title"></div>
+            <div class="header-close">
+                <i class="fas fa-xmark"></i>
+            </div>
+        </div>
+
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <!-- 封面页 -->
+                <div class="swiper-slide">
+                    <div class="page">
+                        <div class="blur-circle blur-circle-1"></div>
+                        <div class="blur-circle blur-circle-2"></div>
+                        <h1 class="title">乐加会年度回顾</h1>
+                        <div class="subtitle">感谢有你</div>
+                        <div class="scroll-hint">
+                            <i class="fas fa-chevron-down"></i>
+                            向下滑动继续
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 加入天数页 -->
+                <div class="swiper-slide">
+                    <div class="page">
+                        <h2 class="page-title"></h2>
+                        <div class="data-circles"></div>
+                    </div>
+                </div>
+
+                <!-- 进货统计页 -->
+                <div class="swiper-slide">
+                    <div class="page purchase-page">
+                        <h2 class="page-title"></h2>
+                        <div class="data-circles"></div>
+                    </div>
+                </div>
+
+                <!-- 活动参与页 -->
+                <div class="swiper-slide">
+                    <div class="page">
+                        <h2 class="page-title"></h2>
+                        <div class="data-circles"></div>
+                    </div>
+                </div>
+
+                <!-- 积分统计页 -->
+                <div class="swiper-slide">
+                    <div class="page">
+                        <h2 class="page-title"></h2>
+                        <div class="data-circles"></div>
+                    </div>
+                </div>
+
+                <!-- 货券统计页 -->
+                <div class="swiper-slide">
+                    <div class="page vouchers-page">
+                        <div class="bottle-background">
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+                            <script>
+                                // Matter.js 初始化
+                                const Engine = Matter.Engine,
+                                      Render = Matter.Render,
+                                      World = Matter.World,
+                                      Bodies = Matter.Bodies,
+                                      Body = Matter.Body,
+                                      Events = Matter.Events;
+
+                                // 创建引擎
+                                const engine = Engine.create({
+                                    gravity: {
+                                        x: 0,
+                                        y: 0.5  // 降低重力加速度
+                                    }
+                                });
+
+                                // 获取容器尺寸
+                                const container = document.querySelector('.bottle-background');
+                                const containerWidth = container.offsetWidth || 393;
+                                const containerHeight = container.offsetHeight || 852;
+
+                                // 创建渲染器
+                                const render = Render.create({
+                                    element: container,
+                                    engine: engine,
+                                    options: {
+                                        width: containerWidth,
+                                        height: containerHeight,
+                                        wireframes: false,
+                                        background: 'transparent'
+                                    }
+                                });
+
+                                // 创建瓶子SVG模板
+                                const bottleTemplate = `<svg class="bottle-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M462.90411 368.219178c-10.520548-14.027397-35.068493-35.068493-52.60274-45.589041s-24.547945-38.575342-24.547945-45.589041c0-7.013699 3.506849-35.068493 3.506849-49.095891S378.739726 185.863014 378.739726 175.342466c-3.506849-7.013699-7.013699-31.561644-7.013699-49.095891 0 0 10.520548 3.506849 10.520548-10.520548V21.041096S385.753425 14.027397 371.726027 10.520548C357.69863 7.013699 336.657534 3.506849 319.123288 3.506849S277.041096 7.013699 266.520548 10.520548c-14.027397 3.506849-14.027397 7.013699-14.027397 7.013699v94.684931c0 14.027397 14.027397 14.027397 14.027397 14.027397 0 17.534247-3.506849 42.082192-7.013699 49.095891-3.506849 10.520548-10.520548 38.575342-10.520548 52.602739s3.506849 42.082192 3.50685 49.095891c0 7.013699-3.506849 35.068493-24.547946 45.589041s-42.082192 31.561644-52.602739 45.589041-7.013699 45.589041-7.013699 45.589041v385.753425s0 129.753425 3.506849 161.315068c0 31.561644 21.041096 59.616438 21.041096 59.616439h256s21.041096-28.054795 21.041096-59.616439c0-31.561644 3.506849-161.315068 3.50685-161.315068v-385.753425c-3.506849 0 0-31.561644-10.520548-45.589041z"></path>
+                                </svg>`;
+
+                                // 颜色列表
+                                const colors = [
+                                    '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFBE0B',
+                                    '#FF9999', '#9B59B6', '#3498DB', '#E67E22', '#2ECC71',
+                                    '#F1C40F', '#E84393'
+                                ];
+
+                                // 获取随机颜色
+                                function getRandomColor() {
+                                    return colors[Math.floor(Math.random() * colors.length)];
+                                }
+
+                                // 创建瓶子的DOM元素
+                                function createBottleElement(x, y, angle, color) {
+                                    const bottle = document.createElement('div');
+                                    bottle.style.cssText = `
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                        width: 60px;
+                                        height: 60px;
+                                        opacity: 0.5;
+                                        transform-origin: center;
+                                        pointer-events: none;
+                                    `;
+                                    bottle.innerHTML = bottleTemplate;
+                                    const path = bottle.querySelector('path');
+                                    path.setAttribute('fill', color);
+                                    return bottle;
+                                }
+
+                                // 创建瓶子物理对象
+                                function createBottle() {
+                                    const x = Math.random() * (containerWidth - 60);
+                                    const y = -60;
+                                    
+                                    // 生成一个随机的初始角度，避开整数倍的90度
+                                    const baseAngle = Math.random() * Math.PI * 2;
+                                    const offsetAngle = (Math.random() * 0.6 + 0.2) * Math.PI;
+                                    const angle = baseAngle + offsetAngle;
+                                    
+                                    const color = getRandomColor();
+
+                                    const bottleElement = createBottleElement(x, y, angle, color);
+                                    container.appendChild(bottleElement);
+
+                                    const bottle = Bodies.rectangle(x, y, 60, 60, {
+                                        angle: angle,
+                                        restitution: 0.0001,  // 几乎完全没有弹性
+                                        friction: 0.99,      // 极大的摩擦力
+                                        density: 2.0,        // 大幅增加密度
+                                        frictionAir: 0.001,  // 保持低空气阻力
+                                        frictionStatic: 0.99, // 极大的静摩擦力
+                                        angularDamping: 0.99, // 最大角速度阻尼
+                                        angularVelocity: (Math.random() - 0.5) * 0.01, // 进一步减小初始角速度
+                                        inertia: Infinity,
+                                        render: {
+                                            visible: false
+                                        },
+                                        element: bottleElement
+                                    });
+
+                                    // 添加随机初始速度
+                                    const initialVelocity = {
+                                        x: (Math.random() - 0.5) * 0.05, // 进一步减小初始水平速度
+                                        y: 0
+                                    };
+                                    Body.setVelocity(bottle, initialVelocity);
+
+                                    return bottle;
+                                }
+
+                                // 创建边界墙
+                                const wallThickness = 60;
+                                const walls = [
+                                    Bodies.rectangle(containerWidth/2, containerHeight + wallThickness/2, containerWidth + wallThickness*2, wallThickness, { 
+                                        isStatic: true,
+                                        restitution: 0.001,  // 墙壁也几乎没有弹性
+                                        friction: 0.95,      // 保持高摩擦力
+                                        chamfer: { radius: 10 },
+                                        render: { visible: false }
+                                    }), // 底部
+                                    Bodies.rectangle(-wallThickness/2, containerHeight/2, wallThickness, containerHeight, { 
+                                        isStatic: true,
+                                        restitution: 0.001,
+                                        friction: 0.95,
+                                        chamfer: { radius: 10 },
+                                        render: { visible: false }
+                                    }), // 左侧
+                                    Bodies.rectangle(containerWidth + wallThickness/2, containerHeight/2, wallThickness, containerHeight, { 
+                                        isStatic: true,
+                                        restitution: 0.001,
+                                        friction: 0.95,
+                                        chamfer: { radius: 10 },
+                                        render: { visible: false }
+                                    }) // 右侧
+                                ];
+
+                                World.add(engine.world, walls);
+
+                                // 修改碰撞事件监听
+                                Events.on(engine, 'collisionStart', function(event) {
+                                    event.pairs.forEach(function(pair) {
+                                        const bodyA = pair.bodyA;
+                                        const bodyB = pair.bodyB;
+                                        
+                                        // 如果是瓶子之间的碰撞
+                                        if (!bodyA.isStatic && !bodyB.isStatic) {
+                                            // 减小碰撞后的角速度变化（限制在30度以内）
+                                            const maxRotation = Math.PI / 6; // 30度
+                                            const randomAngleA = (Math.random() * 0.005) * (Math.random() < 0.5 ? -1 : 1) * maxRotation;
+                                            const randomAngleB = (Math.random() * 0.005) * (Math.random() < 0.5 ? -1 : 1) * maxRotation;
+                                            
+                                            // 大幅减小碰撞后的角速度
+                                            Body.setAngularVelocity(bodyA, bodyA.angularVelocity * 0.01 + randomAngleA);
+                                            Body.setAngularVelocity(bodyB, bodyB.angularVelocity * 0.01 + randomAngleB);
+                                            
+                                            // 减小碰撞后的旋转角度变化（限制在30度以内）
+                                            const rotationA = bodyA.angle + (Math.random() * 0.005) * maxRotation;
+                                            const rotationB = bodyB.angle + (Math.random() * 0.005) * maxRotation;
+                                            
+                                            Body.setAngle(bodyA, rotationA);
+                                            Body.setAngle(bodyB, rotationB);
+
+                                            // 减小碰撞后的速度
+                                            const velocityDampening = 0.02;
+                                            Body.setVelocity(bodyA, {
+                                                x: bodyA.velocity.x * velocityDampening,
+                                                y: bodyA.velocity.y * velocityDampening
+                                            });
+                                            Body.setVelocity(bodyB, {
+                                                x: bodyB.velocity.x * velocityDampening,
+                                                y: bodyB.velocity.y * velocityDampening
+                                            });
+                                        }
+                                        // 如果是瓶子与墙的碰撞
+                                        else if (!bodyA.isStatic || !bodyB.isStatic) {
+                                            const bottle = !bodyA.isStatic ? bodyA : bodyB;
+                                            // 大幅减小角速度
+                                            const maxRotation = Math.PI / 6; // 30度
+                                            const currentAngularVelocity = bottle.angularVelocity;
+                                            const randomOffset = (Math.random() * 0.005) * (Math.random() < 0.5 ? -1 : 1) * maxRotation;
+                                            const newAngularVelocity = currentAngularVelocity * 0.01 + randomOffset;
+                                            
+                                            Body.setAngularVelocity(bottle, newAngularVelocity);
+                                            
+                                            // 减小旋转角度变化（限制在30度以内）
+                                            const newAngle = bottle.angle + (Math.random() * 0.005) * maxRotation;
+                                            Body.setAngle(bottle, newAngle);
+
+                                            // 减小碰撞后的速度
+                                            const velocityDampening = 0.02;
+                                            Body.setVelocity(bottle, {
+                                                x: bottle.velocity.x * velocityDampening,
+                                                y: bottle.velocity.y * velocityDampening
+                                            });
+                                        }
+                                    });
+                                });
+
+                                // 更新DOM元素位置
+                                Events.on(engine, 'afterUpdate', function() {
+                                    engine.world.bodies.forEach(body => {
+                                        if (body.element) {
+                                            body.element.style.transform = `translate(${body.position.x - 30}px, ${body.position.y - 30}px) rotate(${body.angle}rad)`;
+                                        }
+                                    });
+                                });
+
+                                // 启动引擎和渲染器
+                                Engine.run(engine);
+                                Render.run(render);
+
+                                // 定时添加瓶子
+                                let bottleCount = 0;
+                                const totalBottles = 35;
+                                const interval = 10000 / totalBottles; // 10秒内均匀释放35个瓶子
+
+                                function addBottle() {
+                                    if (bottleCount < totalBottles) {
+                                        const bottle = createBottle();
+                                        World.add(engine.world, bottle);
+                                        bottleCount++;
+                                    }
+                                }
+
+                                // 初始添加瓶子
+                                for (let i = 0; i < totalBottles; i++) {
+                                    setTimeout(addBottle, i * interval);
+                                }
+
+                                // 清理超出边界的瓶子
+                                Events.on(engine, 'afterUpdate', function() {
+                                    const bodies = engine.world.bodies;
+                                    for (let i = 0; i < bodies.length; i++) {
+                                        const body = bodies[i];
+                                        if (body.position.y > containerHeight + 100) {
+                                            if (body.element) {
+                                                body.element.remove();
+                                            }
+                                            World.remove(engine.world, body);
+                                            bottleCount--;
+                                            if (bottleCount < totalBottles) {
+                                                const newBottle = createBottle();
+                                                World.add(engine.world, newBottle);
+                                                bottleCount++;
+                                            }
+                                        }
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <h2 class="page-title"></h2>
+                        <div class="data-circles"></div>
+                    </div>
+                </div>
+
+                <!-- 年度总结页 -->
+                <div class="swiper-slide">
+                    <div class="page summary-page">
+                        <div class="summary-avatar">
+                            <img src="" alt="年度鸡尾酒" id="summaryAvatar">
+                        </div>
+                        <div class="summary-name">2023年度回顾</div>
+                        <div class="summary-card">
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <div class="label">加入天数</div>
+                                    <div class="value" id="joinDays">180天</div>
+                        </div>
+                                <div class="summary-item">
+                                    <div class="label">扫码天数</div>
+                                    <div class="value" id="scanDays">120天</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="label">进货总量</div>
+                                    <div class="value" id="totalPurchase">1280瓶</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="label">活动参与</div>
+                                    <div class="value" id="totalActivity">15次</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="label">累计积分</div>
+                                    <div class="value" id="totalPoints">2680分</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="label">货券抵扣</div>
+                                    <div class="value" id="totalVoucher">￥860</div>
+                                </div>
+                            </div>
+                            <div class="summary-footer">
+                                感谢一路相伴，期待2024年继续与您共同成长！
+                            </div>
+                        </div>
+                        <div class="summary-share">
+                            <i class="fas fa-share-alt"></i>
+                            分享我的年度回顾
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-container">
+        <div class="navigation"></div>
+        <div class="page-description">
+            <h3></h3>
+            <p></p>
+        </div>
+    </div>
+
+    <!-- 图片目录按钮 -->
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <!-- 图片目录 -->
+    <div class="image-menu">
+        <!-- 目录项会通过 JavaScript 动态生成 -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // 加载内容配置
+        let content = {
+            "title": "乐加会年度回顾",
+            "statusBar": {
+                "carrier": "中国移动"
+            },
+            "header": {
+                "title": "乐加会年度报告"
+            },
+            "pages": {
+                "cover": {
+                    "title": "2025上半年度回顾",
+                    "subtitle": "乐加会 · 与你共同成长",
+                    "scrollHint": "↑ 向上滑动查看更多",
+                    "description": "展示年度回顾标题、上滑提示动画、动态背景光效"
+                },
+                "membership": {
+                    "title": "你的乐加会之旅",
+                    "circles": [
+                        {
+                            "value": "2023-11-12",
+                            "label": "是我们相遇的第一天"
+                        },
+                        {
+                            "value": "180",
+                            "label": "一转眼已经天"
+                        },
+                        {
+                            "value": "120",
+                            "label": "今年共计扫码天"
+                        }
+                    ],
+                    "description": "加入天数数据圈、扫码天数数据圈、浮动动画效果"
+                },
+                "purchase": {
+                    "title": "今年最喜欢的品牌是...",
+                    "circles": [
+                        {
+                            "value": "1280",
+                            "label": "进货瓶"
+                        },
+                        {
+                            "value": "5",
+                            "label": "覆盖品牌个"
+                        },
+                        {
+                            "value": "尊美醇",
+                            "label": "最爱品牌"
+                        }
+                    ],
+                    "brands": [
+                        {
+                            "name": "尊美醇",
+                            "percentage": 35
+                        },
+                        {
+                            "name": "绝对伏特加",
+                            "percentage": 28
+                        },
+                        {
+                            "name": "必富达",
+                            "percentage": 20
+                        },
+                        {
+                            "name": "奥美加",
+                            "percentage": 12
+                        },
+                        {
+                            "name": "马利宝",
+                            "percentage": 5
+                        }
+                    ],
+                    "description": "进货总量数据圈、品牌覆盖数据圈、最爱品牌数据圈，下方展示品牌进货比例柱状图"
+                },
+                "activities": {
+                    "title": "今年参与了...",
+                    "circles": [
+                        {
+                            "value": "6",
+                            "label": "参与活动次"
+                        },
+                        {
+                            "value": "4",
+                            "label": "获得奖励次",
+                            "details": [
+                                "1-2月 尊美醇12赠1",
+                                "3-4月 尊美醇12赠1",
+                                "3月 赠绿茶",
+                                "3-4月 单一麦芽赠酒"
+                            ]
+                        },
+                        {
+                            "value": "2",
+                            "label": "错过活动次",
+                            "details": [
+                                "1-4月 尊美醇12赠1",
+                                "3-4月 单一麦芽赠酒"
+                            ]
+                        }
+                    ],
+                    "description": "参与次数数据圈\n获得奖励数据圈\n错过活动数据圈\n浮动动画效果"
+                },
+                "points": {
+                    "title": "积分...",
+                    "circles": [
+                        {
+                            "value": "12800",
+                            "label": "累计获得积分"
+                        },
+                        {
+                            "value": "1",
+                            "label": "兑换礼品次数"
+                        },
+                        {
+                            "value": "酒具",
+                            "label": "最爱兑换的礼品"
+                        }
+                    ],
+                    "description": "累计积分数据圈\n兑换礼品数数据圈\n最爱礼品数据圈\n浮动动画效果\n如果从来没有兑换过礼品，就不展示最爱兑换的礼品，而展示赶紧去积分商城看看吧"
+                },
+                "vouchers": {
+                    "title": "优惠券...",
+                    "circles": [
+                        {
+                            "value": "3",
+                            "label": "兑换月数"
+                        },
+                        {
+                            "value": "12800",
+                            "label": "抵扣货款元"
+                        },
+                        {
+                            "value": "35",
+                            "label": "相当于几瓶尊美醇"
+                        }
+                    ],
+                    "description": "兑换次数数据圈、抵扣金额数据圈、平均单次抵扣数据圈、浮动动画效果\n只有可以兑换货券的门店需要展示\n背景是彩色酒瓶自由落体堆积的效果，根据相应抵扣瓶数落体相应数量的瓶子，每次滑动到这一页都要开始掉落"
+                },
+                "summary": {
+                    "title": "你的年度鸡尾酒形象：莫斯科骡子",
+                    "subtitle": "形象的解读",
+                    "text": "期待在2025年继续相伴",
+                    "shareText": "分享到朋友圈",
+                    "description": "用户年度形象头像用鸡尾酒、总结数据、保存图片（静态展示）、领取积分"
+                }
+            },
+            "navigation": [
+                {
+                    "text": "封面页",
+                    "key": "cover"
+                },
+                {
+                    "text": "加入天数",
+                    "key": "membership"
+                },
+                {
+                    "text": "进货统计",
+                    "key": "purchase"
+                },
+                {
+                    "text": "活动参与",
+                    "key": "activities"
+                },
+                {
+                    "text": "积分统计",
+                    "key": "points"
+                },
+                {
+                    "text": "货券兑换",
+                    "key": "vouchers"
+                },
+                {
+                    "text": "年度总结",
+                    "key": "summary"
+                }
+            ]
+        };
+        let swiper;
+
+        // 生成数据圈 HTML
+        function generateDataCircles(circles) {
+            return circles.map((circle, index) => {
+                let detailsHtml = '';
+                if (circle.details && circle.label !== "参与活动次") {
+                    detailsHtml = `
+                        <div class="activities-details">
+                            <div class="activities-details-title">${circle.label}详情</div>
+                            <ul>
+                                ${circle.details.map(detail => `<li>${detail}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+                
+                return `
+                <div class="data-circle" style="animation-delay: ${index * 0.1}s, ${index * 0.2}s">
+                    <div class="value">${circle.value}</div>
+                    <div class="label">${circle.label}</div>
+                </div>
+                    ${detailsHtml}
+                `;
+            }).join('');
+        }
+
+        // 初始化 Swiper
+        function initSwiper() {
+            swiper = new Swiper('.swiper', {
+                direction: 'vertical',
+                mousewheel: true,
+                keyboard: {
+                    enabled: true,
+                    onlyInViewport: true
+                },
+                speed: 800,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                grabCursor: true,
+                touchEventsTarget: 'container',
+                touchRatio: 1,
+                touchAngle: 45,
+                resistance: true,
+                resistanceRatio: 0.85,
+                threshold: 5,
+                touchStartPreventDefault: false,
+                on: {
+                    init: function() {
+                        updateNavigation(0);
+                    },
+                    slideChange: function () {
+                        updateNavigation(this.activeIndex);
+                        updateDescription(this.activeIndex);
+                        resetCircleAnimations();
+                        resetCardAnimations();
+                    }
+                }
+            });
+
+            // 绑定导航点击事件
+            bindNavigationEvents();
+
+            return swiper;
+        }
+
+        // 更新导航状态
+        function updateNavigation(activeIndex) {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach((item, index) => {
+                item.classList.toggle('active', index === activeIndex);
+            });
+        }
+
+        // 绑定导航点击事件
+        function bindNavigationEvents() {
+            document.querySelectorAll('.nav-item').forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    if (swiper) {
+                        swiper.slideTo(index);
+                    }
+                });
+            });
+        }
+
+        // 重置数据圈动画
+        function resetCircleAnimations() {
+            const circles = document.querySelectorAll('.data-circle');
+            circles.forEach((circle, index) => {
+                circle.style.animation = 'none';
+                circle.offsetHeight;
+                circle.style.animation = `fadeInScale 0.8s forwards ${index * 0.1}s, floatCircle 3s infinite ${index * 0.2}s ease-in-out`;
+            });
+        }
+
+        // 重置卡片动画
+        function resetCardAnimations() {
+            const cards = document.querySelectorAll('.data-card');
+            cards.forEach(card => {
+                card.style.animation = 'none';
+                card.offsetHeight;
+                card.style.animation = 'fadeInUp 0.8s forwards';
+            });
+        }
+
+        // 更新页面说明
+        function updateDescription(index) {
+            if (!content) return;
+
+            const description = document.querySelector('.page-description');
+            if (!description) return;
+
+            description.style.opacity = '0';
+            
+            setTimeout(() => {
+                const pageKeys = ['cover', 'membership', 'purchase', 'activities', 'points', 'vouchers', 'summary'];
+                const currentPage = content.pages[pageKeys[index]];
+                
+                if (currentPage && content.navigation[index]) {
+                    description.querySelector('h3').textContent = content.navigation[index].text;
+                    description.querySelector('p').textContent = currentPage.description;
+                }
+                description.style.opacity = '1';
+            }, 300);
+        }
+
+        // 更新页面内容
+        function updateContent() {
+            if (!content) {
+                console.error('No content loaded');
+                return;
+            }
+
+            console.log('Updating content with:', content);
+
+            // 更新标题
+            document.title = content.title || '乐加会年度回顾';
+            
+            // 更新状态栏
+            if (content.statusBar) {
+                document.querySelector('.status-bar-left span').textContent = content.statusBar.carrier || '中国移动';
+            }
+            
+            // 更新头部
+            if (content.header) {
+                document.querySelector('.header-title').textContent = content.header.title || '乐加会年度报告';
+            }
+
+            // 更新导航
+            if (content.navigation) {
+                const navContainer = document.querySelector('.navigation');
+                navContainer.innerHTML = content.navigation
+                    .map((item, index) => `
+                        <div class="nav-item${index === 0 ? ' active' : ''}">${item.text}</div>
+                    `)
+                    .join('');
+
+                // 重新绑定导航点击事件
+                bindNavigationEvents();
+            }
+
+            // 更新各页面的文本内容
+            updatePageTexts();
+
+            // 更新当前页面的说明
+            if (swiper) {
+                updateDescription(swiper.activeIndex);
+            }
+
+            // 为活动参与页面添加特殊类名
+            const activitiesSlide = document.querySelector('.swiper-slide:nth-child(4)');
+            if (activitiesSlide) {
+                activitiesSlide.querySelector('.page').classList.add('activities-page');
+            }
+
+            // 更新年度总结页数据
+            document.getElementById('summaryAvatar').src = 'image/summary_images/moscow_mule_1.jpg';
+            
+            // 从content配置中获取数据
+            const membershipData = content.pages.membership.circles;
+            const purchaseData = content.pages.purchase.circles;
+            const activityData = content.pages.activities.circles;
+            const pointsData = content.pages.points.circles;
+            const voucherData = content.pages.vouchers.circles;
+
+            // 更新数据显示
+            document.getElementById('joinDays').textContent = membershipData[0].value;
+            document.getElementById('scanDays').textContent = membershipData[1].value + '天';
+            document.getElementById('totalPurchase').textContent = purchaseData[0].value + '瓶';
+            document.getElementById('totalActivity').textContent = activityData[0].value + '次';
+            document.getElementById('totalPoints').textContent = pointsData[0].value + '分';
+            document.getElementById('totalVoucher').textContent = '￥' + voucherData[1].value;
+
+            // 为进货统计页面添加特殊类名和品牌柱形图
+            const purchaseSlide = document.querySelector('.swiper-slide:nth-child(3)');
+            if (purchaseSlide) {
+                const page = purchaseSlide.querySelector('.page');
+                page.classList.add('purchase-page');
+                
+                // 添加品牌柱形图
+                if (content.pages.purchase.brands) {
+                    const brandBars = document.createElement('div');
+                    brandBars.className = 'brand-bars';
+                    
+                    content.pages.purchase.brands.forEach((brand, index) => {
+                        const barHtml = `
+                            <div class="brand-bar" style="animation-delay: ${index * 0.2}s">
+                                <div class="bar-container">
+                                    <div class="bar-fill">
+                                        <span class="brand-percentage">${brand.percentage}%</span>
+                                        <span class="brand-name">${brand.name}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        brandBars.innerHTML += barHtml;
+                    });
+                    
+                    page.appendChild(brandBars);
+                }
+            }
+
+            // 更新积分统计页面
+            const pointsSlide = document.querySelector('.swiper-slide:nth-child(5)');
+            if (pointsSlide) {
+                const dataCirclesContainer = pointsSlide.querySelector('.data-circles');
+                if (dataCirclesContainer && content.pages.points.circles) {
+                    let circlesHtml = generateDataCircles(content.pages.points.circles);
+                    // 添加礼品图片圈
+                    circlesHtml += `
+                        <div class="data-circle gift-circle" style="animation-delay: 0.4s, 0.7s">
+                            <img src="gift.png" alt="积分礼品" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'140\\' height=\\'140\\'><rect width=\\'100%\\' height=\\'100%\\' fill=\\'%23666\\'/><text x=\\'50%\\' y=\\'50%\\' font-size=\\'14\\' fill=\\'white\\' text-anchor=\\'middle\\' dy=\\'.3em\\'>礼品图片</text></svg>'">
+                        </div>
+                    `;
+                    dataCirclesContainer.innerHTML = circlesHtml;
+                }
+            }
+        }
+
+        function updatePageTexts() {
+            if (!content || !content.pages) {
+                console.error('No content or pages found');
+                return;
+            }
+
+            try {
+                console.log('Updating page texts with pages:', content.pages);
+
+                // 更新封面页
+                if (content.pages.cover) {
+                    const coverPage = document.querySelector('.swiper-slide:nth-child(1)');
+                    if (coverPage) {
+                        coverPage.querySelector('.title').textContent = content.pages.cover.title;
+                        coverPage.querySelector('.subtitle').textContent = content.pages.cover.subtitle;
+                        coverPage.querySelector('.scroll-hint').textContent = content.pages.cover.scrollHint;
+                    }
+                }
+
+                // 更新其他页面的标题和数据
+                const pages = ['membership', 'purchase', 'activities', 'points', 'vouchers'];
+                pages.forEach((page, index) => {
+                    if (!content.pages[page]) {
+                        console.warn(`No content found for page: ${page}`);
+                        return;
+                    }
+
+                    const slideIndex = index + 2;
+                    const slide = document.querySelector(`.swiper-slide:nth-child(${slideIndex})`);
+                    if (slide) {
+                        const pageContent = content.pages[page];
+                        
+                        // 更新页面标题
+                        const titleElement = slide.querySelector('.page-title');
+                        if (titleElement) {
+                            titleElement.textContent = pageContent.title;
+                        }
+                        
+                        // 更新数据圈
+                        if (pageContent.circles) {
+                            const dataCirclesContainer = slide.querySelector('.data-circles');
+                            if (dataCirclesContainer) {
+                                dataCirclesContainer.innerHTML = generateDataCircles(pageContent.circles);
+                            }
+                        }
+                    }
+                });
+
+                // 更新总结页
+                if (content.pages.summary) {
+                    const summarySlide = document.querySelector('.swiper-slide:last-child');
+                    if (summarySlide) {
+                        const summary = content.pages.summary;
+                        const elements = {
+                            title: summarySlide.querySelector('.data-card .title'),
+                            subtitle: summarySlide.querySelector('.data-card .subtitle'),
+                            text: summarySlide.querySelector('.data-card p:last-child'),
+                            shareButton: summarySlide.querySelector('.share-button span')
+                        };
+
+                        if (elements.title) elements.title.textContent = summary.title;
+                        if (elements.subtitle) elements.subtitle.textContent = summary.subtitle;
+                        if (elements.text) elements.text.textContent = summary.text;
+                        if (elements.shareButton) elements.shareButton.textContent = summary.shareText;
+                    }
+                }
+            } catch (error) {
+                console.error('Error updating page texts:', error);
+            }
+        }
+
+        // 更新状态栏时间
+        function updateTime() {
+            const timeElement = document.querySelector('.time');
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            timeElement.textContent = `${hours}:${minutes}`;
+        }
+
+        // 初始化页面
+        async function init() {
+            try {
+                console.log('Starting initialization...');
+                
+                // 初始化 Swiper
+                console.log('Initializing Swiper...');
+                swiper = initSwiper();
+                console.log('Swiper initialized:', swiper);
+
+                // 更新页面内容
+                console.log('Updating page content...');
+                updateContent();
+
+                // 初始更新时间并每分钟更新一次
+                console.log('Setting up time updates...');
+                updateTime();
+                setInterval(updateTime, 60000);
+
+                // 添加返回和关闭按钮的点击事件
+                console.log('Setting up button events...');
+                document.querySelector('.header-back').addEventListener('click', () => {
+                    history.back();
+                });
+
+                document.querySelector('.header-close').addEventListener('click', () => {
+                    window.close();
+                });
+
+                // 初始调整手机框大小
+                console.log('Adjusting phone frame...');
+                adjustPhoneFrame();
+                
+                console.log('Initialization complete!');
+            } catch (error) {
+                console.error('Initialization failed:', error);
+                const coverTitle = document.querySelector('.swiper-slide:first-child .title');
+                if (coverTitle) {
+                    coverTitle.textContent = error.message || '加载失败';
+                    coverTitle.style.color = 'red';
+                }
+            }
+        }
+
+        // 动态调整手机框大小
+        function adjustPhoneFrame() {
+            const frame = document.querySelector('.phone-frame');
+            const windowHeight = window.innerHeight;
+            const windowWidth = window.innerWidth;
+            const phoneHeight = 852; // 手机原始高度
+            const phoneWidth = 393;  // 手机原始宽度
+            const aspectRatio = phoneWidth / phoneHeight; // 保持宽高比
+            
+            // 考虑页面padding和其他元素占用的空间
+            const minMargin = 20; // 最小边距
+            const availableHeight = windowHeight - (minMargin * 2);
+            const availableWidth = windowWidth - (minMargin * 2);
+            
+            // 计算基于可用空间的缩放比例
+            let scale = Math.min(
+                availableHeight / phoneHeight,
+                availableWidth / phoneWidth
+            );
+            
+            // 限制最小和最大缩放
+            scale = Math.max(0.5, Math.min(scale, 1));
+            
+            // 计算缩放后的尺寸
+            const scaledHeight = phoneHeight * scale;
+            const scaledWidth = phoneWidth * scale;
+            
+            // 计算边距
+            const verticalMargin = Math.max((windowHeight - scaledHeight) / 2, minMargin);
+            const horizontalMargin = Math.max((windowWidth - scaledWidth) / 2, minMargin);
+            
+            if (windowWidth <= phoneWidth) {
+                // 在小屏设备上全屏显示
+                frame.style.transform = 'none';
+                frame.style.borderRadius = '0';
+                frame.style.boxShadow = 'none';
+                frame.style.width = '100vw';
+                frame.style.height = '100vh';
+                document.body.style.padding = '0';
+            } else {
+                // 在大屏设备上保持比例并居中
+                frame.style.transform = `scale(${scale})`;
+                frame.style.transformOrigin = 'center center';
+                frame.style.width = `${phoneWidth}px`;
+                frame.style.height = `${phoneHeight}px`;
+                frame.style.borderRadius = 'var(--phone-border-radius)';
+                frame.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.05)';
+                
+                // 设置body的padding，确保上下左右边距一致
+                document.body.style.padding = `${verticalMargin}px ${horizontalMargin}px`;
+            }
+            
+            // 更新右侧容器的宽度
+            const rightContainer = document.querySelector('.right-container');
+            if (rightContainer) {
+                const remainingWidth = windowWidth - scaledWidth - (horizontalMargin * 3);
+                rightContainer.style.width = `${Math.min(360, Math.max(280, remainingWidth))}px`;
+                rightContainer.style.flexShrink = '0';
+            }
+        }
+
+        // 监听窗口大小变化
+        window.addEventListener('resize', adjustPhoneFrame);
+
+        // 当 DOM 加载完成后初始化
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html> 
