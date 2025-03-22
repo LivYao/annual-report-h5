@@ -1,0 +1,11 @@
+{
+  "name": "GitHub Code Sync",
+  "id": "github-code-sync",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["api.github.com", "github.com"]
+  }
+} 

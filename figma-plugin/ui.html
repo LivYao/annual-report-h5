@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      margin: 8px 0;
+      padding: 8px;
+    }
+    button {
+      background: #18A0FB;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 8px 0;
+    }
+    .error {
+      color: red;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <h3>GitHub Code Sync</h3>
+  
+  <label>GitHub Token:</label>
+  <input type="password" id="token" placeholder="ghp_xxxxxxxxxxxx">
+  
+  <label>Repository Owner:</label>
+  <input type="text" id="owner" placeholder="username">
+  
+  <label>Repository Name:</label>
+  <input type="text" id="repo" placeholder="repository">
+  
+  <label>File Path:</label>
+  <input type="text" id="path" placeholder="path/to/file.js">
+  
+  <button id="fetch">获取代码</button>
+  
+  <label>代码内容:</label>
+  <textarea id="content" rows="10"></textarea>
+  
+  <label>提交信息:</label>
+  <input type="text" id="commit-message" placeholder="Update file">
+  
+  <button id="update">更新到 GitHub</button>
+  
+  <div id="error" class="error"></div>
+
+  <script>
+    document.getElementById('fetch').onclick = () => {
+      const token = document.getElementById('token').value;
+      const owner = document.getElementById('owner').value;
+      const repo = document.getElementById('repo').value;
+      const path = document.getElementById('path').value;
+      
+      parent.postMessage({
+        pluginMessage: {
+          type: 'fetch-github',
+          token,
+          owner,
+          repo,
+          path
+        }
+      }, '*');
+    };
+    
+    document.getElementById('update').onclick = () => {
+      const token = document.getElementById('token').value;
+      const owner = document.getElementById('owner').value;
+      const repo = document.getElementById('repo').value;
+      const path = document.getElementById('path').value;
+      const content = document.getElementById('content').value;
+      const commitMessage = document.getElementById('commit-message').value;
+      
+      parent.postMessage({
+        pluginMessage: {
+          type: 'update-github',
+          token,
+          owner,
+          repo,
+          path,
+          content,
+          commitMessage
+        }
+      }, '*');
+    };
+    
+    onmessage = (event) => {
+      const msg = event.data.pluginMessage;
+      
+      if (msg.type === 'github-content') {
+        document.getElementById('content').value = msg.content;
+      } else if (msg.type === 'error') {
+        document.getElementById('error').textContent = msg.message;
+      } else if (msg.type === 'github-updated') {
+        document.getElementById('error').textContent = '更新成功！';
+        document.getElementById('error').style.color = 'green';
+      }
+    };
+  </script>
+</body>
+</html> 

@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+
+import React from 'react';
+import styles from './ImportedDesign.module.css';
+
+export default function ImportedDesign() {
+  return (
+    <div className={styles.container}>
+      <!DOCTYPE html>
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
@@ -126,3 +133,6 @@
     </div>
 </body>
 </html> 
+    </div>
+  );
+}
